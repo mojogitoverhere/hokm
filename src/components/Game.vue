@@ -1,15 +1,16 @@
 <template>
-  <div>
-    <label>Bet
-      <input type="text" v-model="bet" />
-    </label>
-    <label>King
-      <input type="radio" id="team1" value="team1" v-model="king"/>
-      <label for="team1">Team 1</label>
-      <input type="radio" id="team2" value="team2" v-model="king"/>
-      <label for="team2">Team 2</label>
-    </label>
+  <div id="game-root">
+    <label for="bet">Bet</label>
+    <input type="text" id="bet" v-model="bet" />
+
+    <p>King</p>
+    <input type="radio" id="team1" value="team1" v-model="king"/>
+    <label for="team1">Team 1</label>
+    <input type="radio" id="team2" value="team2" v-model="king"/>
+    <label for="team2">Team 2</label>
+
     <p>Score to win: {{scoreToWin}}</p>
+
     <div class="game">
       <div class="team-1">
         <h1>Team 1</h1>
@@ -24,6 +25,7 @@
         </ul>
       </div>
     </div>
+
     <input v-model="score" type="text"/>
     <button v-on:click="submitScore">Submit Score</button>
     <div v-if="winner">
@@ -88,6 +90,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+#game-root {
+  background-color: red;
+  width: 80%;
+  margin: 0 auto;
+}
 h3 {
   margin: 40px 0 0;
 }
@@ -105,10 +112,7 @@ a {
   background-color:#42b983;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin-left: 10em;
-  margin-right: 10em;
-  column-gap: 50px;
-  row-gap: 50px;
+  margin: 0 auto;
 }
 
 </style>
