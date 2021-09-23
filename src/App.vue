@@ -1,14 +1,17 @@
 <template>
-  <game />
+  <!-- <game /> -->
+  <setup />
 </template>
 
 <script>
-import Game from './components/Game.vue'
+// import Game from './components/Game.vue'
+import Setup from './components/Setup.vue'
 
 export default {
   name: 'App',
   components: {
-    Game,
+    // Game,
+    Setup,
   }
 }
 </script>
