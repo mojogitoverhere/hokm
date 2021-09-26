@@ -70,10 +70,12 @@ export default {
     methods: {
         logButton: function(event) {
             event.preventDefault();
-            if (this.gameIsNotReady )
+            if (this.gameIsNotReady ) {
                 console.log("Game is not READY!!")
-            else
+            } else {
                 console.log("READY TO START!")
+                this.$router.push('round')
+            }
         }
     },
     computed: {
