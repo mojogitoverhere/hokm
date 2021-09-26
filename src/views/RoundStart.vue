@@ -1,57 +1,63 @@
 <template>
-    <h1>Starting Round 1</h1>
-    <h2>It is Player 1's turn to deal!</h2>
+    <MainCard>
+        <h1>Starting Round 1</h1>
+        <h2>It is Player 1's turn to deal!</h2>
 
-    <p>Who is the new King?</p>
-    <div>
+        <p>Who is the new King?</p>
         <div>
-            <input type="radio" id="player-1" name="king" />
-            <label for="player-1">Hearts</label>
+            <div>
+                <input type="radio" id="player-1" name="king" />
+                <label for="player-1">Hearts</label>
+            </div>
+            <div>
+                <input type="radio" id="player-2" name="king"/>
+                <label for="diamonds">Diamonds</label>
+            </div>
+            <div>
+                <input type="radio" id="player-3" name="king"/>
+                <label for="clubs">clubs</label>
+            </div>
+            <div>
+                <input type="radio" id="player-4" name="king"/>
+                <label for="spades">Spades</label>
+            </div>
         </div>
-        <div>
-            <input type="radio" id="player-2" name="king"/>
-            <label for="diamonds">Diamonds</label>
-        </div>
-        <div>
-            <input type="radio" id="player-3" name="king"/>
-            <label for="clubs">clubs</label>
-        </div>
-        <div>
-            <input type="radio" id="player-4" name="king"/>
-            <label for="spades">Spades</label>
-        </div>
-    </div>
 
 
-    <p>How much did they bet?</p>
-    <input type="number" id="current-bet" />
+        <p>How much did they bet?</p>
+        <input type="number" id="current-bet" />
 
-    <p>Which suit is the new trump?</p>
-    <div>
+        <p>Which suit is the new trump?</p>
         <div>
-            <input type="radio" id="hearts" name="suit" />
-            <label for="hearts">Hearts</label>
+            <div>
+                <input type="radio" id="hearts" name="suit" />
+                <label for="hearts">Hearts</label>
+            </div>
+            <div>
+                <input type="radio" id="diamonds" name="suit"/>
+                <label for="diamonds">Diamonds</label>
+            </div>
+            <div>
+                <input type="radio" id="clubs" name="suit"/>
+                <label for="clubs">clubs</label>
+            </div>
+            <div>
+                <input type="radio" id="spades" name="suit"/>
+                <label for="spades">Spades</label>
+            </div>
         </div>
-        <div>
-            <input type="radio" id="diamonds" name="suit"/>
-            <label for="diamonds">Diamonds</label>
-        </div>
-        <div>
-            <input type="radio" id="clubs" name="suit"/>
-            <label for="clubs">clubs</label>
-        </div>
-        <div>
-            <input type="radio" id="spades" name="suit"/>
-            <label for="spades">Spades</label>
-        </div>
-    </div>
-    
-    <button>Start Round</button>
+
+        <button>Start Round</button>
+    </MainCard>
 </template>
 
 <script>
+import MainCard from '../components/MainCard.vue'
 export default {
     name: 'round-start',
+    components: {
+        MainCard,
+    }
 }
 </script>
 
@@ -62,6 +68,7 @@ input {
 }
 h1 {
     font-size: 1.5rem;
+    margin-top: 0;
 }
 h2 {
     font-size: 1.25rem;

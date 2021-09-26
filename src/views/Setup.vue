@@ -1,5 +1,5 @@
 <template>
-    <div class="main-card">
+    <MainCard>
         <form>
             <h1>Setup New Game</h1>
             <h2>Team Setup</h2>
@@ -49,12 +49,16 @@
 
             <input id="start-new-game-button" type="submit" v-on:click="logButton" value="Start New Game" />
         </form>
-    </div>
+    </MainCard>
 </template>
 
 <script>
+import MainCard from '../components/MainCard.vue'
 export default {
     name: 'setup',
+    components: {
+        MainCard,
+    },
     data: () => {
         return {
             players: [
