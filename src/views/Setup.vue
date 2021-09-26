@@ -28,24 +28,7 @@
 
             <h2>Who is dealing first?</h2>
             <p v-if="someNamesBlank">Make sure all 4 player's has been entered above first.</p>
-            <div v-else id="dealers">
-                <div class="dealer">
-                    <input type="radio" name="dealer" id="player1" value=0 v-model="dealer" />
-                    <label for="player1">{{players[0]}}</label>
-                </div>
-                <div class="dealer">
-                    <input type="radio" name="dealer" id="player2" value=1 v-model="dealer" />
-                    <label for="player2">{{players[1]}}</label>
-                </div>
-                <div class="dealer">
-                    <input type="radio" name="dealer" id="player3" value=2 v-model="dealer" />
-                    <label for="player3">{{players[2]}}</label>
-                </div>
-                <div class="dealer">
-                    <input type="radio" name="dealer" id="player4" value=3 v-model="dealer" />
-                    <label for="player4">{{players[3]}}</label>
-                </div>
-            </div>
+            <PlayerSelect v-else :players="players" v-model="dealer"></PlayerSelect>
 
             <input id="start-new-game-button" type="submit" v-on:click="logButton" value="Start New Game" />
         </form>
@@ -54,10 +37,13 @@
 
 <script>
 import MainCard from '../components/MainCard.vue'
+import PlayerSelect from '../components/PlayerSelect.vue'
+
 export default {
     name: 'setup',
     components: {
         MainCard,
+        PlayerSelect,
     },
     data: () => {
         return {
