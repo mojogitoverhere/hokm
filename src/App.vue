@@ -1,18 +1,10 @@
 <template>
-  <!-- <game /> -->
-  <setup />
+  <router-view/>
 </template>
 
 <script>
-// import Game from './components/Game.vue'
-import Setup from './components/Setup.vue'
-
 export default {
   name: 'App',
-  components: {
-    // Game,
-    Setup,
-  }
 }
 </script>
 
