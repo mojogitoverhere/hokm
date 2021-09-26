@@ -7,19 +7,19 @@
             <div id="table">
                 <div>
                     <label for="player-1">Player 1</label>
-                    <input type="text" id="player-1" v-model="player1"/>
+                    <input type="text" id="player-1" v-model="players[0]"/>
                 </div>
                 <div>
                     <label for="player-2">Player 2</label>
-                    <input type="text" id="player-2" v-model="player2" />
+                    <input type="text" id="player-2" v-model="players[1]" />
                 </div>
                 <div>
                     <label for="player-3">Player 3</label>
-                    <input type="text" id="player-3" v-model="player3" />
+                    <input type="text" id="player-3" v-model="players[2]" />
                 </div>
                 <div>
                     <label for="player-4">Player 4</label>
-                    <input type="text" id="player-4" v-model="player4" />
+                    <input type="text" id="player-4" v-model="players[3]" />
                 </div>
             </div>
             <h2>Score to Win</h2>
@@ -30,20 +30,20 @@
             <p v-if="someNamesBlank">Make sure all 4 player's has been entered above first.</p>
             <div v-else id="dealers">
                 <div class="dealer">
-                    <input type="radio" name="dealer" id="player-1" />
-                    <label for="player-1">{{player1}}</label>
+                    <input type="radio" name="dealer" id="player1" value=0 v-model="dealer" />
+                    <label for="player1">{{players[0]}}</label>
                 </div>
                 <div class="dealer">
-                    <input type="radio" name="dealer" id="player-2" />
-                    <label for="player-2">{{player2}}</label>
+                    <input type="radio" name="dealer" id="player2" value=1 v-model="dealer" />
+                    <label for="player2">{{players[1]}}</label>
                 </div>
                 <div class="dealer">
-                    <input type="radio" name="dealer" id="player-3" />
-                    <label for="player-3">{{player3}}</label>
+                    <input type="radio" name="dealer" id="player3" value=2 v-model="dealer" />
+                    <label for="player3">{{players[2]}}</label>
                 </div>
                 <div class="dealer">
-                    <input type="radio" name="dealer" id="player-4" />
-                    <label for="player-4">{{player4}}</label>
+                    <input type="radio" name="dealer" id="player4" value=3 v-model="dealer" />
+                    <label for="player4">{{players[3]}}</label>
                 </div>
             </div>
 
@@ -57,17 +57,23 @@ export default {
     name: 'setup',
     data: () => {
         return {
-            player1: "",
-            player2: "",
-            player3: "",
-            player4: "",
+            players: [
+                "",
+                "",
+                "",
+                "",
+            ],
             scoreToWin: 1000,
-            dealer: "",
+            dealer: null,
         }
     },
     methods: {
-        logButton: function() {
-            console.log("STARTING NEW GAME")
+        logButton: function(event) {
+            event.preventDefault();
+            if (this.gameIsNotReady )
+                console.log("Game is not READY!!")
+            else
+                console.log("READY TO START!")
         }
     },
     computed: {
@@ -75,7 +81,10 @@ export default {
             function isBlank(str) {
                 return (!str || str.trim().length === 0);
             }
-            return isBlank(this.player1) || isBlank(this.player2) || isBlank(this.player3) || isBlank(this.player4)
+            return this.players.some(isBlank)
+        },
+        gameIsNotReady: function() {
+           return this.someNamesBlank || !this.dealer || this.scoreToWin <= 0 
         }
     }
 }
@@ -122,6 +131,7 @@ h2 {
     border-radius: 2em;
     letter-spacing: 0.0625rem;
     background: #CCCCCC;
+    cursor: pointer;
 }
 p {
     max-width: 50ch;
